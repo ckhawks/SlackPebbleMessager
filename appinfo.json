@@ -1,7 +1,8 @@
 {
     "appKeys": {
         "firstKey": 0,
-        "secondKey": 1
+        "secondKey": 1,
+        "mtype":200
     },
     "capabilities": [
         ""
