@@ -15,7 +15,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     return;
   }
 
-  dict_write_uint16(iter, 0, 1);
+  dict_write_uint16(iter, 200, 1);
   dict_write_end(iter);
 
   app_message_outbox_send();
@@ -51,6 +51,7 @@ static void window_unload(Window *window) {
 }
 
 static void init(void) {
+  app_message_open(512, 512);
   window = window_create();
   window_set_click_config_provider(window, click_config_provider);
   window_set_window_handlers(window, (WindowHandlers) {
@@ -59,6 +60,8 @@ static void init(void) {
   });
   const bool animated = true;
   window_stack_push(window, animated);
+  
+  
 }
 
 static void deinit(void) {
