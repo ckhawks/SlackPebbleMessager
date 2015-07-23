@@ -29,7 +29,7 @@ Pebble.addEventListener('appmessage',
       case 1:
         console.log("I don't know what to do with case 1?"); // haha what
         var req1 = new XMLHttpRequest();
-        req1.open('GET', 'https://slack.com/api/chat.postMessage?token=xoxp-7213939015-8005854450-8065247734-2d7ab5&channel=%23random&text=BOT%3A%20Testing&username=ckhbot&pretty=1', true);
+        req1.open('GET', 'https://slack.com/api/chat.postMessage?token=xoxp-7213939015-8005854450-8065247734-2d7ab5&channel=%23random&text=BOT%3A%20Hi%20there%20from%20the%20Pebble!&username=ckhbot&pretty=1', true);
         req1.onload = function(e){
           // do stuff.exe
         };
