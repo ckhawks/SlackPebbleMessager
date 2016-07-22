@@ -4,9 +4,32 @@
 
 static Window *window;
 static TextLayer *text_layer;
+AppTimer *timer;
+int messageIdentifier;
+
+void updateIdentifier(){
+
+  switch(messageIdentifier){
+    case 1:
+      text_layer_set_text(text_layer, "Hi, I'm a bot!");
+    break;
+    case 2:
+      text_layer_set_text(text_layer, "Case 2 UNBOUND");
+    break;
+    case 3:
+      text_layer_set_text(text_layer, "Running Late");
+    break;
+  }
+  
+}
+
+static void updateSent(){
+  text_layer_set_text(text_layer, "Sent message!");
+  timer = app_timer_register(100, updateIdentifier, NULL);
+}
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Select");
+  text_layer_set_text(text_layer, "Send Message");
   
   DictionaryIterator *iter;
   app_message_outbox_begin(&iter);
@@ -15,19 +38,29 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
     return;
   }
 
-  dict_write_uint16(iter, 200, 1);
+  dict_write_uint16(iter, 200, messageIdentifier); // 200 and mtype are indentifiers, 1(messageIdentifier) is value.
   dict_write_end(iter);
 
   app_message_outbox_send();
-  
+    
+  updateSent();
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "Up");
+  
+  messageIdentifier++;
+
+  
+  updateIdentifier();
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "Down");
+  
+  messageIdentifier--;
+  
+  updateIdentifier();
 }
 
 static void click_config_provider(void *context) {
@@ -59,6 +92,9 @@ static void init(void) {
     .unload = window_unload,
   });
   const bool animated = true;
+  
+  messageIdentifier = 1;
+  
   window_stack_push(window, animated);
   
   

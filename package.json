@@ -1,0 +1,32 @@
+{
+    "author": "ckhawks@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "slack-messager",
+    "pebble": {
+        "capabilities": [
+            ""
+        ],
+        "displayName": "Slack Messager",
+        "enableMultiJS": false,
+        "messageKeys": {
+            "firstKey": 0,
+            "mtype": 200,
+            "secondKey": 1
+        },
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt"
+        ],
+        "uuid": "5207c388-c2fb-4ed3-b19d-9b54efe372e2",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
