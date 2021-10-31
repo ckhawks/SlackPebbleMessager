@@ -12,7 +12,7 @@ Pebble.addEventListener('appmessage',
     console.log(e.payload.mtype);
     
     // Determine Message
-    var premsg = "https://slack.com/api/chat.postMessage?token=xoxp-7213939015-8005854450-8065247734-2d7ab5&channel=%23pleb-bot&username=pleb-bot&pretty=1&text=";
+    var premsg = "https://slack.com/api/chat.postMessage?token=TOKENHERE&channel=%23pleb-bot&username=pleb-bot&pretty=1&text=";
     
     switch(e.payload.mtype){
       case 1:
